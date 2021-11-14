@@ -12,7 +12,7 @@ class CodeLabFave extends StatelessWidget {
       (pair) => ListTile(
         title: Text(
           pair.asPascalCase,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: Theme.of(context).textTheme.headline5,
         ),
       ),
     );

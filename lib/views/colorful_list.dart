@@ -31,13 +31,12 @@ class ColorfulListState extends State<ColorfulList> {
         body: ListView(
           itemExtent: 90,
           padding: const EdgeInsets.symmetric(
-            vertical: 10,
             horizontal: 16,
           ),
           children: tiles
               .map(
                 (item) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   child: ListTile(
                     tileColor: item,
                   ),

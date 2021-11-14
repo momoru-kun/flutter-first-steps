@@ -21,7 +21,7 @@ class CodelabState extends State<Codelab> {
     return ListTile(
       title: Text(
         pair.asPascalCase,
-        style: Theme.of(context).textTheme.bodyText2,
+        style: Theme.of(context).textTheme.headline5,
       ),
       trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border,
