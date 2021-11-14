@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-const double _kAppBarProgressIndicatorHeight = 6.0;
-
 class AppBarProgressIndicator extends LinearProgressIndicator
     implements PreferredSizeWidget {
   const AppBarProgressIndicator({
