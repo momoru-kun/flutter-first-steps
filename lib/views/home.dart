@@ -60,8 +60,8 @@ class NavButton extends StatelessWidget {
 final List<NavButton> menuItems = [
   const NavButton('4 квадрата', Routes.squares),
   const NavButton('Цветной список', Routes.colorList),
-  const NavButton('Codelab', Routes.colorList),
-  const NavButton('Асинхронный запрос', Routes.colorList),
+  const NavButton('Codelab', Routes.codelab),
+  const NavButton('Асинхронный запрос', Routes.pictures),
 ];
 
 class _HomePageState extends State<HomePage> {
