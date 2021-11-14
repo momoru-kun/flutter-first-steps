@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_steps/widgets/custom_appbar.dart';
 
 class Pictures extends StatefulWidget {
   const Pictures({Key? key}) : super(key: key);
@@ -10,14 +11,8 @@ class Pictures extends StatefulWidget {
 class PicturesState extends State<Pictures> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text(
-          "Асинхронный запрос",
-          style: Theme.of(context).textTheme.headline6,
-        ),
-      ),
+    return const Scaffold(
+      appBar: CustomAppbar("Асинхронный запрос"),
     );
   }
 }

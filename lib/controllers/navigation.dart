@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_steps/views/codelab.dart';
+import 'package:flutter_first_steps/views/colorful_list.dart';
 import 'package:flutter_first_steps/views/home.dart';
+import 'package:flutter_first_steps/views/pictures.dart';
 import 'package:flutter_first_steps/views/squares.dart';
 
 abstract class Routes {
@@ -14,8 +17,8 @@ class AppNavigation {
   var routes = <String, Widget Function(BuildContext)>{
     Routes.main: (context) => const HomePage(),
     Routes.squares: (context) => const Sqares(),
-    Routes.colorList: (context) => Container(),
-    Routes.codelab: (context) => Container(),
-    Routes.pictures: (context) => Container()
+    Routes.colorList: (context) => const ColorfulList(),
+    Routes.codelab: (context) => const Codelab(),
+    Routes.pictures: (context) => const Pictures(),
   };
 }

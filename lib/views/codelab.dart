@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_steps/widgets/custom_appbar.dart';
 
 class Codelab extends StatefulWidget {
   const Codelab({Key? key}) : super(key: key);
@@ -10,14 +11,8 @@ class Codelab extends StatefulWidget {
 class CodelabState extends State<Codelab> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text(
-          "Контент Кодлаба",
-          style: Theme.of(context).textTheme.headline6,
-        ),
-      ),
+    return const Scaffold(
+      appBar: CustomAppbar("Контент Кодлаба"),
     );
   }
 }
