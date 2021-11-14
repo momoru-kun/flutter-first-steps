@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter First Step',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             fontSize: 22,
           ),
           bodyText1: TextStyle(color: textColor, fontSize: 16),
-          bodyText2: TextStyle(color: textColor),
+          bodyText2: TextStyle(color: textColor, fontSize: 18),
         ),
       ),
       routes: appNavigation.routes,

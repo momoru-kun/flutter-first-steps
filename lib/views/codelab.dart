@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_first_steps/colors.dart';
+import 'package:flutter_first_steps/views/codelab_fave.dart';
 import 'package:flutter_first_steps/widgets/custom_appbar.dart';
 
 class Codelab extends StatefulWidget {
@@ -11,14 +13,30 @@ class Codelab extends StatefulWidget {
 
 class CodelabState extends State<Codelab> {
   final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18);
+  final _saved = <WordPair>{};
 
   Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
+
     return ListTile(
       title: Text(
         pair.asPascalCase,
-        style: _biggerFont,
+        style: Theme.of(context).textTheme.bodyText2,
       ),
+      trailing: Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+        semanticLabel: alreadySaved ? 'Убрать из сохраненок' : 'Сохранить',
+      ),
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 
@@ -41,7 +59,26 @@ class CodelabState extends State<Codelab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbar("Контент Кодлаба"),
+      appBar: CustomAppbar(
+        "Контент Кодлаба",
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.list,
+              size: 28,
+              color: textColor,
+            ),
+            onPressed: () => {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (context) => CodeLabFave(_saved),
+                ),
+              )
+            },
+            tooltip: 'Лайкнуые слова',
+          ),
+        ],
+      ),
       body: _buildSuggestions(),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_steps/views/codelab.dart';
+import 'package:flutter_first_steps/views/codelab_fave.dart';
 import 'package:flutter_first_steps/views/colorful_list.dart';
 import 'package:flutter_first_steps/views/home.dart';
 import 'package:flutter_first_steps/views/pictures.dart';

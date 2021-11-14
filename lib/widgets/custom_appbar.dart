@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first_steps/colors.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
+  final List<Widget>? actions;
   final String title;
-  const CustomAppbar(this.title, {Key? key}) : super(key: key);
+  const CustomAppbar(this.title, {Key? key, this.actions}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(55);
@@ -23,6 +24,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: Theme.of(context).textTheme.headline6,
       ),
+      actions: actions,
     );
   }
 }
