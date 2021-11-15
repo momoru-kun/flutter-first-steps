@@ -23,7 +23,8 @@ class NavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 10, //TODO: отступ между кнопками 16, а не 20(как получится в сумме у тебя, так как и снизу и сверху у каждого кнопки по 10)
+        // TODO: Лучше оступы реализовать на основе SizedBox
         horizontal: 20,
       ),
       child: ElevatedButton(
