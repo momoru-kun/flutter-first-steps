@@ -4,6 +4,7 @@ import 'package:flutter_first_steps/widgets/colored_container.dart';
 import 'package:flutter_first_steps/widgets/custom_appbar.dart';
 import 'package:flutter_first_steps/widgets/fab.dart';
 
+//TODO: SqUares
 class Sqares extends StatefulWidget {
   const Sqares({Key? key}) : super(key: key);
 
@@ -21,6 +22,7 @@ class SqaresState extends State<Sqares> {
     const Color(0xFFC4C4C4),
   ];
 
+  //TODO: Дарт строго типизированный. И стоиит указывать возвращаемый тип. Иначе здесь у тебя dynamic вместо void
   _updateColors() {
     if (!colored) colored = true;
 
@@ -35,7 +37,8 @@ class SqaresState extends State<Sqares> {
     return Scaffold(
       appBar: const CustomAppbar("4 квадрата"),
       floatingActionButton: FAB(onPressed: () {
-        setState(_updateColors);
+        setState(_updateColors); //Лучше занести setState в _updateСolors и здесь просто передать этот метод в onPressed
+        //Будет чуть проще читаться.
       }),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +50,7 @@ class SqaresState extends State<Sqares> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyText1,
                 )
-              : Container(),
+              : Container(),//TODO: для таких случаев рекомендуется использовать SizedBox.shrink() - это контейнер с нулевыми размерами.
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
