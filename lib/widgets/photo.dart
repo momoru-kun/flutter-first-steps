@@ -1,16 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_steps/models/photo.dart';
 
 class Photo extends StatelessWidget {
-  final String url;
-  final String title;
+  final Picture picture;
 
-  const Photo(this.url, this.title, {Key? key}) : super(key: key);
+  const Photo(this.picture, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Card(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          elevation: 4,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(16.0),
+            ),
+          ),
+          child: Stack(
+            alignment: AlignmentDirectional.bottomStart,
+            children: [
+              Image.network(picture.url),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.6),
+                      Colors.white.withOpacity(0.3),
+                    ],
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 16,
+                  ),
+                  child: Text(picture.title),
+                ),
+              )
+            ],
+          )),
+    );
+  }
+}
+/*Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 4,
         shape: const RoundedRectangleBorder(
@@ -44,7 +79,4 @@ class Photo extends StatelessWidget {
                 ),
               ),
             )),
-      ),
-    );
-  }
-}
+      ),*/
