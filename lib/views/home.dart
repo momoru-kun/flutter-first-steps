@@ -21,37 +21,31 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 20,
-      ),
-      child: ElevatedButton(
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            route,
-          )
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-          padding: MaterialStateProperty.all<EdgeInsets>(
-            const EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 21,
-            ),
+    return ElevatedButton(
+      onPressed: () => {
+        Navigator.pushNamed(
+          context,
+          route,
+        )
+      },
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+        padding: MaterialStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 21,
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.button,
-            ),
-            const Icon(Icons.arrow_forward, color: textColor),
-          ],
-        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.button,
+          ),
+          const Icon(Icons.arrow_forward, color: textColor),
+        ],
       ),
     );
   }
@@ -76,8 +70,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
+        padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 16),
+        child: Wrap(
+          runSpacing: 16,
           children: menuItems,
         ),
       ),

@@ -16,7 +16,7 @@ abstract class Routes {
 class AppNavigation {
   var routes = <String, Widget Function(BuildContext)>{
     Routes.main: (context) => const HomePage(),
-    Routes.squares: (context) => const Sqares(),
+    Routes.squares: (context) => const Squares(),
     Routes.colorList: (context) => const ColorfulList(),
     Routes.codelab: (context) => const Codelab(),
     Routes.pictures: (context) => const Pictures(),
