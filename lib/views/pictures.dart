@@ -19,23 +19,30 @@ class PicturesState extends State<Pictures> {
   List<Picture> photos = [];
   var _loading = false;
   var _page = 0;
+  var _error = false;
 
   Future<void> _fetchPhotos() async {
+    setState(() {
+      _loading = true;
+    });
     final response = await http.get(
       Uri.parse(
         'https://jsonplaceholder.typicode.com/photos?_limit=10&page=$_page',
       ),
     );
     if (response.statusCode == 200) {
-      photos.addAll(
-          jsonDecode(response.body).map((photo) => Picture.fromJson(photo)));
+      photos.addAll(jsonDecode(response.body)
+          .map<Picture>((photo) => Picture.fromJson(photo))
+          .toList());
 
       setState(() {
         _loading = false;
       });
       _page++;
     } else {
-      throw Exception('Failed to load photos');
+      setState(() {
+        _error = true;
+      });
     }
   }
 
@@ -58,17 +65,22 @@ class PicturesState extends State<Pictures> {
               )
             : null,
       ),
-      body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-          child: IncrementallyLoadingListView(
-            hasMore: () => photos.length <= 6000,
-            itemCount: () => photos.length,
-            loadMore: () async {
-              await _fetchPhotos();
-            },
-            loadMoreOffsetFromBottom: 2,
-            itemBuilder: (context, i) => Photo(photos[i]),
-          )),
+      body: !_error
+          ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+              child: IncrementallyLoadingListView(
+                hasMore: () => photos.length <= 6000,
+                itemCount: () => photos.length,
+                loadMore: () async {
+                  await _fetchPhotos();
+                },
+                loadMoreOffsetFromBottom: 2,
+                itemBuilder: (context, i) => Photo(photos[i]),
+              ))
+          : const Text(
+              "Ошибка загрузки данных",
+              textAlign: TextAlign.center,
+            ),
     );
   }
 }
