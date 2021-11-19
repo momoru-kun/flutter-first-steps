@@ -14,10 +14,12 @@ class ColorfulListState extends State<ColorfulList> {
   var tiles = List<Color>.filled(25, const Color(0xFFC4C4C4));
 
   void _updateColors() {
-    for (int i = 0; i < 25; i++) {
-      tiles[i] =
-          Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-    }
+    setState(() {
+      for (int i = 0; i < 25; i++) {
+        tiles[i] =
+            Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+      }
+    });
   }
 
   Widget listBuilder(BuildContext context, int i) {
