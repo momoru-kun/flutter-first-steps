@@ -13,11 +13,20 @@ class ColorfulList extends StatefulWidget {
 class ColorfulListState extends State<ColorfulList> {
   var tiles = List<Color>.filled(25, const Color(0xFFC4C4C4));
 
-  VoidCallback? _updateColors() {
+  void _updateColors() {
     for (int i = 0; i < 25; i++) {
       tiles[i] =
           Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
     }
+  }
+
+  Widget listBuilder(BuildContext context, int i) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ListTile(
+        tileColor: tiles[i],
+      ),
+    );
   }
 
   @override
@@ -25,22 +34,16 @@ class ColorfulListState extends State<ColorfulList> {
     return Scaffold(
       appBar: const CustomAppbar("Цветной список"),
       floatingActionButton: FAB(
-        onPressed: _updateColors(),
+        onPressed: _updateColors,
       ),
-      body: ListView(
+      body: ListView.builder(
         itemExtent: 90,
+        itemCount: tiles.length,
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
+          vertical: 10,
         ),
-        children: [
-          for (final item in tiles)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: ListTile(
-                tileColor: item,
-              ),
-            ),
-        ],
+        itemBuilder: listBuilder,
       ),
     );
   }

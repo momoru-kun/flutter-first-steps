@@ -27,15 +27,13 @@ class PicturesState extends State<Pictures> {
       ),
     );
     if (response.statusCode == 200) {
-      var data =
-          jsonDecode(response.body).map((photo) => Picture.fromJson(photo));
+      photos.addAll(
+          jsonDecode(response.body).map((photo) => Picture.fromJson(photo)));
 
       setState(() {
         _loading = false;
       });
       _page++;
-
-      photos += [for (Picture photo in data) photo];
     } else {
       throw Exception('Failed to load photos');
     }

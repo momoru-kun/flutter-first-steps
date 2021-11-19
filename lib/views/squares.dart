@@ -21,7 +21,7 @@ class SquaresState extends State<Squares> {
     const Color(0xFFC4C4C4),
   ];
 
-  VoidCallback? _updateColors() {
+  void _updateColors() {
     setState(() {
       if (!colored) colored = true;
 
